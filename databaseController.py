@@ -1,3 +1,6 @@
+#project is in the localhost
+#so database connection is not using for now
+
 import time
 
 import pandas as pd

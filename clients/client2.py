@@ -1,3 +1,6 @@
+#clients connected to mosquitto broker
+#mqtt protocol is using
+
 import paho.mqtt.client as mqtt
 import time
 import os

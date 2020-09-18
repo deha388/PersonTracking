@@ -1,3 +1,6 @@
+
+#simple frontend design for the simulation of project
+
 import tkinter
 import tkinter as tk
 from mailbox import mbox

@@ -30,10 +30,14 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-
+    #clients running same time
     clientController.method_1()
+
+    #waiting to done clients process
     time.sleep(127)
 
+    #after client process,we have 8 dic. so searching the common key in per dictionary
+    #and create new dict. with this common key's values
     for key in client1.keyMapDict:
         if key in client2.keyMapDict and key in client3.keyMapDict and key in client4.keyMapDict and key in client5.keyMapDict \
                  and key in client6.keyMapDict and key in client7.keyMapDict and key in client8.keyMapDict:
@@ -42,6 +46,8 @@ if __name__ == '__main__':
                            client7.keyMapDict[key], client8.keyMapDict[key]]
     print("\033[1;34;40m Bright Blue \n")
     print(a_dict)
+
+    #KNN algorithm is running on datasets
 
     PavoDataset = pd.read_csv('datasets/dataset1.csv')
     # print(PavoDataset.head(6))
@@ -57,8 +63,10 @@ if __name__ == '__main__':
 
     knn.fit(X_train, y_train)
 
+    #for the frontend progress,we have to clean xyz.txt
     open('xyz.txt', 'w')
 
+    #with the mapping methoden,prediction operation is going from big to small
 
     def predictData():
         values = []
