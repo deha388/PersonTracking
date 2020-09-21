@@ -55,7 +55,7 @@ if __name__ == '__main__':
     location = PavoDataset['location2'][:]
     # print(location.head(6))
 
-    X = PavoDataset.drop(['location2', 'location1'], axis=1)
+    X = PavoDataset.drop(['location2', 'location1','location3'], axis=1)
 
     X_train, X_test, y_train, y_test = train_test_split(X, location, test_size=0.10)
 

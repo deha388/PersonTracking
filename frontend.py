@@ -44,18 +44,18 @@ a3 = canvas.create_line(915, 25, 915, 725, dash=(5, 2))
 file1 = open('xyz.txt', 'r')
 Lines = file1.readlines()
 
-x = Text(root, height=5, width=5)
-x.place(x=25,y=375)
-y = Text(root, height=5, width=5)
-y.place(x=95,y=375)
-z = Text(root, height=5, width=5)
-z.place(x=165,y=375)
-t = Text(root, height=5, width=5)
-t.place(x=235,y=375)
+# x = Text(root, height=5, width=5)
+# x.place(x=25,y=375)
+# y = Text(root, height=5, width=5)
+# y.place(x=95,y=375)
+# z = Text(root, height=5, width=5)
+# z.place(x=165,y=375)
+# t = Text(root, height=5, width=5)
+# t.place(x=235,y=375)
 
 
 
-def onObjectClick(event,x):
+def onObjectClick(x):
     print('Got object click')
     messagebox.showinfo("PersonID", x)
 
@@ -78,8 +78,7 @@ for line in Lines:
 
             randomh = randint(25, 90)
             randomw = randint(375, 455)
-            x=Text(root,height=20, width=30)
-            x.place(25, 90)
+
 
             my_button1 = Button(root, bg="black", command=lambda asd=asd: onObjectClick(asd), height=1, width=2)
             buttons.append(my_button1)

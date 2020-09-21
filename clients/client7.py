@@ -1,5 +1,5 @@
-#clients connected to mosquitto broker
-#mqtt protocol is using
+# clients connected to mosquitto broker
+# mqtt protocol is using
 import paho.mqtt.client as mqtt
 import time
 
@@ -7,7 +7,9 @@ global list
 HashTable = [[] for _ in range(4000)]
 HashTable1 = [[] for _ in range(4000)]
 global keyMapDict
-keyMapDict={}
+keyMapDict = {}
+
+
 
 def closest_value(value, iterable):
     storage = []
@@ -25,8 +27,10 @@ def closest_value(value, iterable):
 
     return keyValue
 
+
 def closest(lst, K):
     return lst[min(range(len(lst)), key=lambda i: abs(lst[i] - K))]
+
 
 # Function to display hashtable
 def display_hash(hashTable):
@@ -43,12 +47,14 @@ def display_hash(hashTable):
     print()
     # Creating Hashtable as
 
+
 # a nested list.
 
 # Hashing Function to return
 # key for every value.
 def Hashing(keyvalue):
     return keyvalue % len(HashTable)
+
 
 # Insert Function to add
 # values to the hash table
@@ -69,17 +75,17 @@ def findKey(hashTable):
             # print("-->", end=" ")
             # print(j, end=" ")
 
-            #find to avarege number for the middle point of list
+            # find to avarege number for the middle point of list
 
             # print(avarageValue)
 
-            #closest number function
+            # closest number function
 
             k = closest(hashTable[i], avarageValue)
-            #taking index to closest number is helping us the keyValue so keyValue==(i+(i+1)+(i+2)+(i-1)+(i-2))==RSSI
+            # taking index to closest number is helping us the keyValue so keyValue==(i+(i+1)+(i+2)+(i-1)+(i-2))==RSSI
             index = hashTable[i].index(k)
 
-            #flowing value need to sort for the real RSSI
+            # flowing value need to sort for the real RSSI
             hashTable[i].sort()
 
             try:
@@ -87,7 +93,8 @@ def findKey(hashTable):
                     keyValue = avarageValue
                 else:
 
-                    if hashTable[i][index] == hashTable[i][index + 1] == hashTable[i][index + 2] == hashTable[i][index + 3] == hashTable[i][index + 4]:
+                    if hashTable[i][index] == hashTable[i][index + 1] == hashTable[i][index + 2] == hashTable[i][
+                        index + 3] == hashTable[i][index + 4]:
 
                         keyValue = hashTable[i][index]
 
@@ -112,19 +119,21 @@ def findKey(hashTable):
             except IndexError:
                 keyValue = avarageValue
 
-
             # print(keyValue)
 
-            insert(HashTable1,i,keyValue)
+            insert(HashTable1, i, keyValue)
 
     # print()
+
 
 ##########Defining all call back functions###################
 
 def on_connect(client, userdata, flags, rc):  # called when the broker responds to our connection request
     print("Connected Client1 - rc:", rc)
 
-def on_message(client, userdata,message):  # Called when a message has been received on a topic that the client has subscirbed to.
+
+def on_message(client, userdata, message):
+    # Called when a message has been received on a topic that the client has subscirbed to.
 
     if str(message.topic) != pubtop:
 
@@ -132,9 +141,9 @@ def on_message(client, userdata,message):  # Called when a message has been rece
 
         if len((message.payload)) == 8:
 
-            # Consantrator wants to know,anyone listening to him or not
-            # so sending 8 byte controllerMessage
-            # responseMessage include Datetime,Checksum and etc totally 13 bytes data sending to Consantrator in byte format
+            # Consantrator wants to know,anyone listening to him or not so sending 8 byte controllerMessage
+            # responseMessage include Datetime,Checksum and etc totally 13 bytes data sending to Consantrator in byte
+            # format
 
             list = [0x01, 0x00, 0x09, 0xEF, 0x02, 0x01, 0x07, 0xE1, 0x16, 0x16, 0x16, 0x25, 0x04]
             # hexa value to byte type convert
@@ -146,8 +155,7 @@ def on_message(client, userdata,message):  # Called when a message has been rece
             # after starting taking messagePacket need to "understand data"
             # converting data to Hex format
             value = bytearray(msg)
-            HexList = []
-            HexList.append(value.hex('-'))
+            HexList = [value.hex('-')]
             data = HexList[0]
 
             # formatting data to splitting
@@ -230,6 +238,7 @@ pubtop = "BTtakip/Pavofwu/TA0000485/cmd"
 broker_address = "localhost"
 port = 1883
 
+
 def runClient7():
     client = mqtt.Client()
     client.on_subscribe = on_subscribe
@@ -241,7 +250,6 @@ def runClient7():
 
     client.subscribe(subtop)
     client.loop_start()
-
 
     time.sleep(120)
 
@@ -261,4 +269,3 @@ def runClient7():
     print("Client7++")
 
     print(keyMapDict)
-
