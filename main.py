@@ -1,7 +1,7 @@
 
 #This project include KNN as a learning methoden , trying ANN  is not useful because dataset is not a enough large for learning
 #however fluctation is still biggest problem against to learning
-#but when we consider the data after fluctation,
+#but when we consider the data after fluctuation,
 
 
 

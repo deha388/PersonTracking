@@ -11,7 +11,7 @@ from tkinter import messagebox
 
 root = Tk()
 root.title("Personal Tracking System")
-canvas = tk.Canvas(root, width=1250, height=850, )
+canvas = tk.Canvas(root, width=1250, height=750, )
 canvas.pack()
 
 rect = canvas.create_rectangle(1200, 700, 1, 1, fill="white", outline="black", width=3)
